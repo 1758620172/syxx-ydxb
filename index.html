@@ -2,104 +2,521 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>三位数加减法练习</title>
+    <title>三位数加减法（6道）</title>
     <style>
-        /* 基础样式 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            font-size: 24px;
-            text-align: center;
+        /* 通用样式 */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
-        
-        /* 标题样式 - 增加10像素字符间距 */
-        h1 {
+        .title {
             font-size: 52px;
-            font-weight: bold;
-            letter-spacing: 20px;
-            margin-bottom: 25px;
-        }
-        
-        /* 菜单容器 */
-        .menu-container {
+            color: black;
+            margin: 0;
+            font-family: Calibri, sans-serif;
+            letter-spacing: 1px;
+            line-height: 1.2; /* 调整行高 */        
+}
+        .problem-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 40px;
+            padding-left: 20px;
         }
-        
-        /* 按钮样式 - 增加5像素字符间距 */
-        .menu-btn {
-            background-color: #4CAF50;
+        .problem {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .problem-text {
+            font-size: 50px;
+            margin-bottom: 1px;
+            line-height: 1;
+            font-family: Calibri, sans-serif;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        .black { color: black; }
+        .blue { color: blue; }
+        .answer {
+            color: red;
+            display: none;
+            letter-spacing: 1px;
+        }
+        .answer-btn {
+            background-color: green;
             color: white;
             border: none;
-            padding: 8px 16px;
-            font-size: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-            height: 63px;
-            border-radius: 30px;
-            width: calc(50% - 10px);
-            text-align: center;
-            letter-spacing: 10px;
-            transition: background-color 0.3s;
+            font-family: Calibri, sans-serif;
+            letter-spacing: 1px;
         }
-        
-        /* 按钮悬停效果 */
-        .menu-btn:hover {
-            background-color: #45a049;
-        }
-        
-        /* 过期提示样式 */
-        .expired-message {
-            font-size: 36px;
-            color: red;
-            margin-top: 100px;
+
+        /* 加法专用样式 */
+        .addition .calculation {
+            font-size: 47px;
+            font-weight: bold;
+            line-height: 1.2;
+            font-family: 'Calibri', monospace;
+            margin-top: 10px;
             display: none;
+            text-align: right;
+            letter-spacing: 1.5px;
         }
+        .addition .operator {
+            color: red;
+            width: 0.8ch;
+            padding-right: 10px;
+            letter-spacing: 1px;
+        }
+        .addition .units { color: red; }
+        .addition .tens { color: green; }
+        .addition .hundreds { color: orange; }
+        .addition .thousands { color: purple; }
+        .addition .equals-line {
+            border-top: 3px solid red;
+            width: calc(var(--max-digits) * 1ch + 1ch + 65px);
+            margin: 8px 0 8px calc(1ch - 33px);
+            letter-spacing: 1.5px;
+        }
+        .addition .digit-row {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            line-height: 1.2;
+            letter-spacing: 0.1ch;
+        }
+        .addition .digit-cell {
+            position: relative;
+            text-align: center;
+            width: 1.5ch;
+            min-width: 1.5ch;
+        }
+        .addition .carry-mark {
+            position: absolute;
+            font-size: 0.5em;
+            left: -6px; /* 进位标记左位置 */
+            top: -32px;
+            font-family: "楷体", "KaiTi", sans-serif;
+            font-weight: bold;
+            letter-spacing: 0;
+        }
+        .addition .units-carry { color: green; }
+        .addition .tens-carry { color: orange; }
+        .addition .hundreds-carry { color: purple; }
+        .addition .digit-holder {
+            display: inline-block;
+            width: 1ch;
+            text-align: center;
+            letter-spacing: 1.5px;
+        }
+
+        /* 减法专用样式 */
+        .subtraction .solution {
+            font-size: 47px;
+            margin-top: 0px;
+            display: none;
+            margin-right: 7ch;
+        }
+        .subtraction .digit-red { color: red; font-weight: bold; }
+        .subtraction .digit-green { color: green; font-weight: bold; }
+        .subtraction .digit-orange { color: orange; font-weight: bold; }
+        .subtraction .digit-purple { color: purple; font-weight: bold; }
+        .subtraction .operator-red { color: red; font-weight: bold; } /* 新增红色运算符样式 */
+        .subtraction .line {
+            border-top: 3px solid red;
+            margin: 1px 0;
+            display: inline-block;
+        }
+        .subtraction .number-row {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0;
+            position: relative;
+        }
+        .subtraction .digit {
+            width: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .subtraction .operator {
+            width: 40px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        .subtraction .solution-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin: 0;
+        }
+        .subtraction .borrow-marker {
+            position: absolute;
+            top: -22px;
+            right: 40px;
+            color: red;
+            font-size: 0.8em;
+        }
+        .subtraction .digit-container {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+        }
+        .subtraction .hidden-zero { visibility: hidden; }
+        .subtraction .empty-digit { display: inline-block; width: 40px; }
     </style>
 </head>
 <body>
-    <!-- 主内容容器 -->
-    <div id="main-content">
-        <!-- 主标题 -->
-        <h1>三位数加减法练习</h1>
-        
-        <!-- 菜单按钮区域 -->
-        <div class="menu-container">
-            <button class="menu-btn" onclick="window.location.href='整百数加减法.html'">整百数加减法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数不进位加法.html'">三位数不进位加法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数进位加法.html'">三位数进位加法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数连续进位加法.html'">三位数连续进位加法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数加法.html'">三位数加法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数不退位减法.html'">三位数不退位减法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数退位减法.html'">三位数退位减法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数连续退位减法.html'">三位数连续退位减法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数减法.html'">三位数减法</button>
-            <button class="menu-btn" onclick="window.location.href='三位数加减（6道）.html'">三位数加减（6道）</button>
-            <button class="menu-btn" onclick="window.location.href='三位数加减（6加6减）.html'">三位数加减（6加6减）</button>
-            <button class="menu-btn" onclick="window.location.href='三位数加减（12道）.html'">三位数加减（12道）</button>
-        </div>
+    <div class="header-container">
+        <div class="title">竖式计算。</div>
+        <button class="answer-btn" onclick="toggleAnswers()">答案</button>
     </div>
-    
-   
-    
+    <div class="problem-container" id="problems-container"></div>
+
     <script>
-        // 检查日期是否过期
-        function checkExpiration() {
-            const currentDate = new Date();
-            const expirationDate = new Date(2025, 7, 1); // 2025年8月1日(月份是0-11)
+        // Fisher-Yates洗牌算法
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // 生成加法题目
+        function generateAdditionProblem(type) {
+            let num1, num2;
             
-            if (currentDate > expirationDate) {
-                // 隐藏主内容
-                document.getElementById('main-content').style.display = 'none';
-                // 显示过期消息
-                document.getElementById('expired-message').style.display = 'block';
+            if (type === 'three_three') {
+                num1 = Math.floor(Math.random() * 900) + 100;
+                num2 = Math.floor(Math.random() * 900) + 100;
+            } else if (type === 'two_three') {
+                num1 = Math.floor(Math.random() * 24) + 76;
+                num2 = Math.floor(Math.random() * 900) + 100;
+            } else { // three_two
+                num1 = Math.floor(Math.random() * 900) + 100;
+                num2 = Math.floor(Math.random() * 24) + 76;
+            }
+            
+            const sum = num1 + num2;
+            
+            // 格式化数字
+            const num1Str = num1.toString().split('');
+            const num2Str = num2.toString().split('');
+            const sumStr = sum.toString().split('');
+            
+            // 确定最大位数（用于等号线宽度）
+            const maxLength = Math.max(num1Str.length, num2Str.length, sumStr.length);
+            
+            // 创建竖式计算HTML
+            let calculationHTML = '';
+            
+            // 创建数字行函数
+            const createDigitRow = (digits, hasOperator = false, showCarry = false) => {
+                let rowHTML = '<div class="digit-row">';
+                
+                // 添加运算符或空白占位
+                if (hasOperator) {
+                    rowHTML += `<span class="operator">+</span>`;
+                } else {
+                    rowHTML += `<span class="digit-cell"></span>`;
+                }
+                
+                // 添加前导空格
+                for (let j = 0; j < maxLength - digits.length; j++) {
+                    rowHTML += '<span class="digit-cell"></span>';
+                }
+                
+                // 添加数字
+                for (let j = 0; j < digits.length; j++) {
+                    const digit = digits[j];
+                    // 确定数字位的类别
+                    let digitClass = '';
+                    const positionFromRight = digits.length - 1 - j;
+                    if (positionFromRight === 0) digitClass = 'units';
+                    else if (positionFromRight === 1) digitClass = 'tens';
+                    else if (positionFromRight === 2) digitClass = 'hundreds';
+                    else digitClass = 'thousands';
+                    
+                    rowHTML += `<span class="digit-cell ${digitClass}"><span class="digit-holder">${digit}</span>`;
+                    
+                    // 在需要进位的数字上方添加进位标记
+                    if (showCarry) {
+                        const currentDigit = parseInt(digits[j]);
+                        const nextDigit = j < digits.length - 1 ? parseInt(digits[j+1]) : 0;
+                        
+                        // 检查是否需要进位
+                        if (positionFromRight === 0 && (num1 % 10 + num2 % 10 >= 10)) {
+                            // 个位进位
+                            rowHTML += `<span class="carry-mark units-carry">1</span>`;
+                        } 
+                        else if (positionFromRight === 1 && 
+                                (Math.floor(num1 / 10) % 10 + Math.floor(num2 / 10) % 10 + 
+                                (num1 % 10 + num2 % 10 >= 10 ? 1 : 0) >= 10)) {
+                            // 十位进位
+                            rowHTML += `<span class="carry-mark tens-carry">1</span>`;
+                        }
+                        else if (positionFromRight === 2 && 
+                                (Math.floor(num1 / 100) % 10 + Math.floor(num2 / 100) % 10 + 
+                                (Math.floor(num1 / 10) % 10 + Math.floor(num2 / 10) % 10 + 
+                                (num1 % 10 + num2 % 10 >= 10 ? 1 : 0) >= 10 ? 1 : 0) >= 10)) {
+                            // 百位进位
+                            rowHTML += `<span class="carry-mark hundreds-carry">1</span>`;
+                        }
+                    }
+                    rowHTML += '</span>';
+                }
+                
+                return rowHTML + '</div>';
+            };
+            
+            // 第一行(第一个加数)
+            calculationHTML += createDigitRow(num1Str);
+            
+            // 第二行(运算符+第二个加数)
+            calculationHTML += createDigitRow(num2Str, true);
+            
+            // 等号线
+            calculationHTML += `<div class="equals-line" style="--max-digits: ${maxLength};"></div>`;
+            
+            // 结果行（显示进位标记）
+            calculationHTML += createDigitRow(sumStr, false, true);
+            
+            return {
+                type: 'addition',
+                num1,
+                num2,
+                sum,
+                calculationHTML
+            };
+        }
+
+        // 生成减法题目
+        function generateSubtractionProblem(forceThousand = false) {
+            let minuend, subtrahend;
+            
+            do {
+                if (forceThousand) {
+                    minuend = 1000;
+                    // 确保结果大于11，所以subtrahend最大为988
+                    subtrahend = Math.floor(Math.random() * (1000 - 12 - 400)) + 400;
+                } else {
+                    subtrahend = Math.floor(Math.random() * (999 - 10)) + 10;
+                    minuend = Math.floor(Math.random() * (999 - subtrahend)) + subtrahend + 1;
+                    
+                    // 确保结果大于11
+                    while (minuend - subtrahend <= 11) {
+                        subtrahend = Math.floor(Math.random() * (999 - 10)) + 10;
+                        minuend = Math.floor(Math.random() * (999 - subtrahend)) + subtrahend + 1;
+                    }
+                }
+            } while (minuend > 1000 || (minuend - subtrahend) <= 0);
+            
+            const difference = minuend - subtrahend;
+            
+            const minArr = minuend.toString().split('').reverse();
+            const subArr = subtrahend.toString().split('').reverse();
+            const diffArr = difference.toString().split('').reverse();
+            
+            const maxLength = Math.max(minArr.length, subArr.length, diffArr.length);
+            const lineWidth = maxLength * 40 + 45;
+            
+            // 计算需要借位的位置（从右到左，0表示个位）
+            const borrowPositions = [];
+            let currentMinuend = minuend;
+            let currentSubtrahend = subtrahend;
+            
+            for (let i = 0; i < maxLength; i++) {
+                const minDigit = Math.floor(currentMinuend / Math.pow(10, i)) % 10;
+                const subDigit = Math.floor(currentSubtrahend / Math.pow(10, i)) % 10;
+                
+                if (minDigit < subDigit) {
+                    borrowPositions.push(i);
+                    
+                    // 处理连续借位（如十位为0时需要向百位借位）
+                    let j = i + 1;
+                    while (j < maxLength) {
+                        const nextDigit = Math.floor(currentMinuend / Math.pow(10, j)) % 10;
+                        if (nextDigit === 0) {
+                            borrowPositions.push(j);
+                            j++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            // 生成被减数行（带借位标记）
+            let minuendRow = minArr.map((d, i) => {
+                const pos = i; // 从右到左，0表示个位
+                let digitClass = 'digit-red';
+                if (pos === 1) digitClass = 'digit-green';
+                if (pos === 2) digitClass = 'digit-orange';
+                if (pos >= 3) digitClass = 'digit-purple';
+                
+                if (borrowPositions.includes(pos)) {
+                    return `
+                        <div class="digit-container">
+                            <div class="digit ${digitClass}">${d}</div>
+                            <div class="borrow-marker">·</div>
+                        </div>
+                    `;
+                } else {
+                    return `<div class="digit ${digitClass}">${d}</div>`;
+                }
+            }).reverse().join(''); // 反转回从左到右显示
+            
+            // 生成减数行（对齐位数）
+            const subSpaces = maxLength - subArr.length;
+            let subtrahendRow = '';
+            
+            subtrahendRow += `<div class="operator operator-red">-</div>`; // 修改为红色运算符
+            
+            for (let i = 0; i < subSpaces; i++) {
+                subtrahendRow += `<div class="empty-digit"></div>`;
+            }
+            
+            subtrahendRow += subArr.reverse().map((d, i) => {
+                const pos = subArr.length - 1 - i;
+                let digitClass = 'digit-red';
+                if (pos === 1) digitClass = 'digit-green';
+                if (pos === 2) digitClass = 'digit-orange';
+                if (pos >= 3) digitClass = 'digit-purple';
+                
+                return `<div class="digit ${digitClass}">${d}</div>`;
+            }).join('');
+            
+            // 生成结果行（对齐位数）
+            const diffSpaces = maxLength - diffArr.length;
+            let differenceRow = '';
+            
+            for (let i = 0; i < diffSpaces; i++) {
+                differenceRow += `<div class="empty-digit"></div>`;
+            }
+            
+            differenceRow += diffArr.reverse().map((d, i) => {
+                const pos = diffArr.length - 1 - i;
+                let digitClass = 'digit-red';
+                if (pos === 1) digitClass = 'digit-green';
+                if (pos === 2) digitClass = 'digit-orange';
+                if (pos >= 3) digitClass = 'digit-purple';
+                
+                return `<div class="digit ${digitClass}">${d}</div>`;
+            }).join('');
+            
+            let solutionHTML = `
+                <div class="solution">
+                    <div class="solution-container">
+                        <div class="number-row">
+                            ${minuendRow}
+                        </div>
+                        <div class="number-row">
+                            ${subtrahendRow}
+                        </div>
+                        <div class="line" style="width: ${lineWidth}px;"></div>
+                        <div class="number-row">
+                            ${differenceRow}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return {
+                type: 'subtraction',
+                minuend,
+                subtrahend,
+                difference,
+                solutionHTML
+            };
+        }
+
+        function generateProblems() {
+            const container = document.getElementById('problems-container');
+            container.innerHTML = '';
+            
+            // 创建题目列表
+            const problems = [];
+            
+            // 确保包含三种必选题型
+            problems.push(generateAdditionProblem('three_three')); // 三位数加三位数
+            problems.push(generateAdditionProblem('two_three')); // 两位数加三位数
+            problems.push(generateSubtractionProblem(true)); // 被减数为1000的减法
+            
+            // 添加剩余题目
+            problems.push(generateAdditionProblem(Math.random() > 0.5 ? 'three_three' : 'three_two'));
+            problems.push(generateSubtractionProblem());
+            problems.push(generateSubtractionProblem());
+            
+            // 打乱题目顺序
+            shuffleArray(problems);
+            
+            // 添加到容器，并确保颜色严格按黑蓝循环
+            problems.forEach((problem, index) => {
+                const colorClass = index % 2 === 0 ? 'black' : 'blue';
+                
+                // 创建题目div
+                const problemDiv = document.createElement('div');
+                problemDiv.className = `problem ${problem.type}`;
+                
+                // 题目文本
+                const problemText = document.createElement('div');
+                problemText.className = `problem-text ${colorClass}`;
+                
+                if (problem.type === 'addition') {
+                    problemText.innerHTML = `${problem.num1} + ${problem.num2} = <span class="answer">${problem.sum}</span>`;
+                    
+                    // 计算过程(初始隐藏)
+                    const calculationDiv = document.createElement('div');
+                    calculationDiv.className = 'calculation';
+                    calculationDiv.innerHTML = problem.calculationHTML;
+                    calculationDiv.style.display = 'none';
+                    
+                    problemDiv.appendChild(problemText);
+                    problemDiv.appendChild(calculationDiv);
+                } else {
+                    problemText.innerHTML = `${problem.minuend} - ${problem.subtrahend} = <span class="answer">${problem.difference}</span>`;
+                    
+                    // 计算过程(初始隐藏)
+                    const calculationDiv = document.createElement('div');
+                    calculationDiv.className = 'solution';
+                    calculationDiv.innerHTML = problem.solutionHTML;
+                    calculationDiv.style.display = 'none';
+                    
+                    problemDiv.appendChild(problemText);
+                    problemDiv.appendChild(calculationDiv);
+                }
+                
+                container.appendChild(problemDiv);
+            });
+        }
+        
+        function toggleAnswers() {
+            const answers = document.querySelectorAll('.answer');
+            const calculations = document.querySelectorAll('.calculation, .solution');
+            const button = document.querySelector('.answer-btn');
+            
+            if (answers[0].style.display === 'inline') {
+                // 隐藏答案
+                answers.forEach(answer => answer.style.display = 'none');
+                calculations.forEach(calc => calc.style.display = 'none');
+                button.textContent = '答案';
+            } else {
+                // 显示答案
+                answers.forEach(answer => answer.style.display = 'inline');
+                calculations.forEach(calc => calc.style.display = 'block');
+                button.textContent = '隐藏答案';
             }
         }
         
-        // 页面加载时检查
-        window.onload = checkExpiration;
+        // 页面加载时生成题目
+        window.onload = generateProblems;
     </script>
 </body>
 </html>
