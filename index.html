@@ -1,522 +1,782 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>三位数加减法（6道）</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聚焦真问题 共研新思路 - 小学数学培训纪实</title>
     <style>
-        /* 通用样式 */
-        .header-container {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid #eaeaea;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #6a89cc 0%, #4a69bd 100%);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 30px -20px;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        
+        .meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            color: #4a69bd;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-        }
-        .title {
-            font-size: 52px;
-            color: black;
-            margin: 0;
-            font-family: Calibri, sans-serif;
-            letter-spacing: 1px;
-            line-height: 1.2; /* 调整行高 */        
-}
-        .problem-container {
+            border-bottom: 2px solid #eaeaea;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 40px;
-            padding-left: 20px;
+            align-items: center;
+            gap: 10px;
         }
-        .problem {
-            width: 30%;
+        
+        .section-title i {
+            font-size: 1.4rem;
+        }
+        
+        .intro {
+            background-color: #f1f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #4a69bd;
+        }
+        
+        .teacher-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .teacher-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+            color: white;
+            padding: 15px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            gap: 12px;
         }
-        .problem-text {
-            font-size: 50px;
-            margin-bottom: 1px;
-            line-height: 1;
-            font-family: Calibri, sans-serif;
-            letter-spacing: 1px;
-            text-align: left;
+        
+        .teacher-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #4a69bd;
         }
-        .black { color: black; }
-        .blue { color: blue; }
-        .answer {
-            color: red;
-            display: none;
-            letter-spacing: 1px;
+        
+        .teacher-info h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
         }
-        .answer-btn {
-            background-color: green;
+        
+        .teacher-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h4 {
+            color: #4a69bd;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ff9f43;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .example {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px dashed #4a69bd;
+        }
+        
+        .example h5 {
+            color: #4a69bd;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 图片轮播样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .carousel-control.prev {
+            left: 15px;
+        }
+        
+        .carousel-control.next {
+            right: 15px;
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #4a69bd;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4a69bd;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #4a69bd;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        .timeline-time {
+            font-weight: bold;
+            color: #4a69bd;
+            margin-bottom: 5px;
+        }
+        
+        /* 分享按钮样式 */
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f1f8ff;
+            border: 1px solid #4a69bd;
+            border-radius: 30px;
+            color: #4a69bd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            background: #4a69bd;
+            color: white;
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #4a69bd;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            border-radius: 50%;
+            font-size: 1.2rem;
             cursor: pointer;
-            font-family: Calibri, sans-serif;
-            letter-spacing: 1px;
-        }
-
-        /* 加法专用样式 */
-        .addition .calculation {
-            font-size: 47px;
-            font-weight: bold;
-            line-height: 1.2;
-            font-family: 'Calibri', monospace;
-            margin-top: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             display: none;
-            text-align: right;
-            letter-spacing: 1.5px;
+            z-index: 1000;
+            transition: background 0.3s;
         }
-        .addition .operator {
-            color: red;
-            width: 0.8ch;
-            padding-right: 10px;
-            letter-spacing: 1px;
+        
+        .back-to-top:hover {
+            background: #6a89cc;
         }
-        .addition .units { color: red; }
-        .addition .tens { color: green; }
-        .addition .hundreds { color: orange; }
-        .addition .thousands { color: purple; }
-        .addition .equals-line {
-            border-top: 3px solid red;
-            width: calc(var(--max-digits) * 1ch + 1ch + 65px);
-            margin: 8px 0 8px calc(1ch - 33px);
-            letter-spacing: 1.5px;
-        }
-        .addition .digit-row {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            line-height: 1.2;
-            letter-spacing: 0.1ch;
-        }
-        .addition .digit-cell {
-            position: relative;
+        
+        footer {
             text-align: center;
-            width: 1.5ch;
-            min-width: 1.5ch;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            font-size: 0.9rem;
         }
-        .addition .carry-mark {
-            position: absolute;
-            font-size: 0.5em;
-            left: -6px; /* 进位标记左位置 */
-            top: -32px;
-            font-family: "楷体", "KaiTi", sans-serif;
-            font-weight: bold;
-            letter-spacing: 0;
+        
+        @media (max-width: 768px) {
+            .teacher-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+            
+            .carousel {
+                height: 250px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
         }
-        .addition .units-carry { color: green; }
-        .addition .tens-carry { color: orange; }
-        .addition .hundreds-carry { color: purple; }
-        .addition .digit-holder {
-            display: inline-block;
-            width: 1ch;
-            text-align: center;
-            letter-spacing: 1.5px;
+        
+        /* 图标样式 */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        /* 减法专用样式 */
-        .subtraction .solution {
-            font-size: 47px;
-            margin-top: 0px;
-            display: none;
-            margin-right: 7ch;
-        }
-        .subtraction .digit-red { color: red; font-weight: bold; }
-        .subtraction .digit-green { color: green; font-weight: bold; }
-        .subtraction .digit-orange { color: orange; font-weight: bold; }
-        .subtraction .digit-purple { color: purple; font-weight: bold; }
-        .subtraction .operator-red { color: red; font-weight: bold; } /* 新增红色运算符样式 */
-        .subtraction .line {
-            border-top: 3px solid red;
-            margin: 1px 0;
-            display: inline-block;
-        }
-        .subtraction .number-row {
-            display: flex;
-            justify-content: flex-end;
-            margin: 0;
-            position: relative;
-        }
-        .subtraction .digit {
-            width: 40px;
-            text-align: center;
-            position: relative;
-        }
-        .subtraction .operator {
-            width: 40px;
-            text-align: center;
-            margin-right: 5px;
-        }
-        .subtraction .solution-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin: 0;
-        }
-        .subtraction .borrow-marker {
-            position: absolute;
-            top: -22px;
-            right: 40px;
-            color: red;
-            font-size: 0.8em;
-        }
-        .subtraction .digit-container {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-        }
-        .subtraction .hidden-zero { visibility: hidden; }
-        .subtraction .empty-digit { display: inline-block; width: 40px; }
     </style>
 </head>
 <body>
-    <div class="header-container">
-        <div class="title">竖式计算。</div>
-        <button class="answer-btn" onclick="toggleAnswers()">答案</button>
-    </div>
-    <div class="problem-container" id="problems-container"></div>
-
-    <script>
-        // Fisher-Yates洗牌算法
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        // 生成加法题目
-        function generateAdditionProblem(type) {
-            let num1, num2;
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">小学数学培训</div>
+            <div class="nav-links">
+                <a href="#morning">上午场</a>
+                <a href="#afternoon">下午场</a>
+                <a href="#schedule">培训日程</a>
+                <a href="#gallery">现场照片</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header>
+            <h1>聚焦真问题 共研新思路</h1>
+            <div class="subtitle">2025粤东西北全员轮训小学数学培训第二期第4日纪实</div>
+            <div class="meta-info">
+                <span><i class="icon">⏱️</i> 16小时前</span>
+                <span><i class="icon">👁️</i> 阅读 1313</span>
+                <span><i class="icon">📅</i> 2025年10月19日</span>
+            </div>
+        </header>
+        
+        <!-- 分享按钮 -->
+        <div class="share-buttons">
+            <button class="share-btn"><i class="icon">📤</i> 分享文章</button>
+            <button class="share-btn"><i class="icon">❤️</i> 收藏文章</button>
+            <button class="share-btn"><i class="icon">📝</i> 写评论</button>
+        </div>
+        
+        <!-- 图片轮播 -->
+        <div id="gallery" class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/4a69bd/ffffff?text=培训现场+1');">
+                    <div class="carousel-caption">分组研讨环节，老师们积极交流</div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/6a89cc/ffffff?text=培训现场+2');">
+                    <div class="carousel-caption">专家讲座，深入解析数学概念教学</div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/4a69bd/ffffff?text=培训现场+3');">
+                    <div class="carousel-caption">实践案例分享，老师们认真记录</div>
+                </div>
+            </div>
+            <button class="carousel-control prev">❮</button>
+            <button class="carousel-control next">❯</button>
+        </div>
+        
+        <!-- 培训日程时间线 -->
+        <section class="section">
+            <h2 class="section-title" id="schedule"><i class="icon">📅</i> 培训日程安排</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">08:30 - 09:00</div>
+                        <h3>开幕式与培训介绍</h3>
+                        <p>培训目标与日程安排说明</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">09:00 - 10:30</div>
+                        <h3>核心素养导向的概念教学</h3>
+                        <p>鲍银霞教研员主持分组研讨</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">10:30 - 12:00</div>
+                        <h3>一线教师经验分享</h3>
+                        <p>多位教师分享教学实践案例</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">14:00 - 15:30</div>
+                        <h3>数学概念教学专题讲座</h3>
+                        <p>专家深入解析概念教学策略</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-time">15:30 - 17:00</div>
+                        <h3>教学设计与实践研讨</h3>
+                        <p>分组设计教学方案并展示交流</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="morning">
+            <h2 class="section-title"><i class="icon">🌅</i> 上午场：核心素养导向的概念教学探索</h2>
             
-            if (type === 'three_three') {
-                num1 = Math.floor(Math.random() * 900) + 100;
-                num2 = Math.floor(Math.random() * 900) + 100;
-            } else if (type === 'two_three') {
-                num1 = Math.floor(Math.random() * 24) + 76;
-                num2 = Math.floor(Math.random() * 900) + 100;
-            } else { // three_two
-                num1 = Math.floor(Math.random() * 900) + 100;
-                num2 = Math.floor(Math.random() * 24) + 76;
-            }
+            <div class="intro">
+                <p>上午的活动中，广东省教育研究院鲍银霞教研员首先引领与会教师开展分组研讨。来自教学一线的老师们畅所欲言，分享了各自在数学概念教学中遇到的真实困境与成功经验。</p>
+            </div>
             
-            const sum = num1 + num2;
-            
-            // 格式化数字
-            const num1Str = num1.toString().split('');
-            const num2Str = num2.toString().split('');
-            const sumStr = sum.toString().split('');
-            
-            // 确定最大位数（用于等号线宽度）
-            const maxLength = Math.max(num1Str.length, num2Str.length, sumStr.length);
-            
-            // 创建竖式计算HTML
-            let calculationHTML = '';
-            
-            // 创建数字行函数
-            const createDigitRow = (digits, hasOperator = false, showCarry = false) => {
-                let rowHTML = '<div class="digit-row">';
-                
-                // 添加运算符或空白占位
-                if (hasOperator) {
-                    rowHTML += `<span class="operator">+</span>`;
-                } else {
-                    rowHTML += `<span class="digit-cell"></span>`;
-                }
-                
-                // 添加前导空格
-                for (let j = 0; j < maxLength - digits.length; j++) {
-                    rowHTML += '<span class="digit-cell"></span>';
-                }
-                
-                // 添加数字
-                for (let j = 0; j < digits.length; j++) {
-                    const digit = digits[j];
-                    // 确定数字位的类别
-                    let digitClass = '';
-                    const positionFromRight = digits.length - 1 - j;
-                    if (positionFromRight === 0) digitClass = 'units';
-                    else if (positionFromRight === 1) digitClass = 'tens';
-                    else if (positionFromRight === 2) digitClass = 'hundreds';
-                    else digitClass = 'thousands';
-                    
-                    rowHTML += `<span class="digit-cell ${digitClass}"><span class="digit-holder">${digit}</span>`;
-                    
-                    // 在需要进位的数字上方添加进位标记
-                    if (showCarry) {
-                        const currentDigit = parseInt(digits[j]);
-                        const nextDigit = j < digits.length - 1 ? parseInt(digits[j+1]) : 0;
-                        
-                        // 检查是否需要进位
-                        if (positionFromRight === 0 && (num1 % 10 + num2 % 10 >= 10)) {
-                            // 个位进位
-                            rowHTML += `<span class="carry-mark units-carry">1</span>`;
-                        } 
-                        else if (positionFromRight === 1 && 
-                                (Math.floor(num1 / 10) % 10 + Math.floor(num2 / 10) % 10 + 
-                                (num1 % 10 + num2 % 10 >= 10 ? 1 : 0) >= 10)) {
-                            // 十位进位
-                            rowHTML += `<span class="carry-mark tens-carry">1</span>`;
-                        }
-                        else if (positionFromRight === 2 && 
-                                (Math.floor(num1 / 100) % 10 + Math.floor(num2 / 100) % 10 + 
-                                (Math.floor(num1 / 10) % 10 + Math.floor(num2 / 10) % 10 + 
-                                (num1 % 10 + num2 % 10 >= 10 ? 1 : 0) >= 10 ? 1 : 0) >= 10)) {
-                            // 百位进位
-                            rowHTML += `<span class="carry-mark hundreds-carry">1</span>`;
-                        }
-                    }
-                    rowHTML += '</span>';
-                }
-                
-                return rowHTML + '</div>';
-            };
-            
-            // 第一行(第一个加数)
-            calculationHTML += createDigitRow(num1Str);
-            
-            // 第二行(运算符+第二个加数)
-            calculationHTML += createDigitRow(num2Str, true);
-            
-            // 等号线
-            calculationHTML += `<div class="equals-line" style="--max-digits: ${maxLength};"></div>`;
-            
-            // 结果行（显示进位标记）
-            calculationHTML += createDigitRow(sumStr, false, true);
-            
-            return {
-                type: 'addition',
-                num1,
-                num2,
-                sum,
-                calculationHTML
-            };
-        }
-
-        // 生成减法题目
-        function generateSubtractionProblem(forceThousand = false) {
-            let minuend, subtrahend;
-            
-            do {
-                if (forceThousand) {
-                    minuend = 1000;
-                    // 确保结果大于11，所以subtrahend最大为988
-                    subtrahend = Math.floor(Math.random() * (1000 - 12 - 400)) + 400;
-                } else {
-                    subtrahend = Math.floor(Math.random() * (999 - 10)) + 10;
-                    minuend = Math.floor(Math.random() * (999 - subtrahend)) + subtrahend + 1;
-                    
-                    // 确保结果大于11
-                    while (minuend - subtrahend <= 11) {
-                        subtrahend = Math.floor(Math.random() * (999 - 10)) + 10;
-                        minuend = Math.floor(Math.random() * (999 - subtrahend)) + subtrahend + 1;
-                    }
-                }
-            } while (minuend > 1000 || (minuend - subtrahend) <= 0);
-            
-            const difference = minuend - subtrahend;
-            
-            const minArr = minuend.toString().split('').reverse();
-            const subArr = subtrahend.toString().split('').reverse();
-            const diffArr = difference.toString().split('').reverse();
-            
-            const maxLength = Math.max(minArr.length, subArr.length, diffArr.length);
-            const lineWidth = maxLength * 40 + 45;
-            
-            // 计算需要借位的位置（从右到左，0表示个位）
-            const borrowPositions = [];
-            let currentMinuend = minuend;
-            let currentSubtrahend = subtrahend;
-            
-            for (let i = 0; i < maxLength; i++) {
-                const minDigit = Math.floor(currentMinuend / Math.pow(10, i)) % 10;
-                const subDigit = Math.floor(currentSubtrahend / Math.pow(10, i)) % 10;
-                
-                if (minDigit < subDigit) {
-                    borrowPositions.push(i);
-                    
-                    // 处理连续借位（如十位为0时需要向百位借位）
-                    let j = i + 1;
-                    while (j < maxLength) {
-                        const nextDigit = Math.floor(currentMinuend / Math.pow(10, j)) % 10;
-                        if (nextDigit === 0) {
-                            borrowPositions.push(j);
-                            j++;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-            }
-            
-            // 生成被减数行（带借位标记）
-            let minuendRow = minArr.map((d, i) => {
-                const pos = i; // 从右到左，0表示个位
-                let digitClass = 'digit-red';
-                if (pos === 1) digitClass = 'digit-green';
-                if (pos === 2) digitClass = 'digit-orange';
-                if (pos >= 3) digitClass = 'digit-purple';
-                
-                if (borrowPositions.includes(pos)) {
-                    return `
-                        <div class="digit-container">
-                            <div class="digit ${digitClass}">${d}</div>
-                            <div class="borrow-marker">·</div>
+            <div class="teacher-cards">
+                <!-- 刘展鸿老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">刘</div>
+                        <div class="teacher-info">
+                            <h3>刘展鸿老师</h3>
+                            <p>教学实践难点分析</p>
                         </div>
-                    `;
-                } else {
-                    return `<div class="digit ${digitClass}">${d}</div>`;
-                }
-            }).reverse().join(''); // 反转回从左到右显示
-            
-            // 生成减数行（对齐位数）
-            const subSpaces = maxLength - subArr.length;
-            let subtrahendRow = '';
-            
-            subtrahendRow += `<div class="operator operator-red">-</div>`; // 修改为红色运算符
-            
-            for (let i = 0; i < subSpaces; i++) {
-                subtrahendRow += `<div class="empty-digit"></div>`;
-            }
-            
-            subtrahendRow += subArr.reverse().map((d, i) => {
-                const pos = subArr.length - 1 - i;
-                let digitClass = 'digit-red';
-                if (pos === 1) digitClass = 'digit-green';
-                if (pos === 2) digitClass = 'digit-orange';
-                if (pos >= 3) digitClass = 'digit-purple';
-                
-                return `<div class="digit ${digitClass}">${d}</div>`;
-            }).join('');
-            
-            // 生成结果行（对齐位数）
-            const diffSpaces = maxLength - diffArr.length;
-            let differenceRow = '';
-            
-            for (let i = 0; i < diffSpaces; i++) {
-                differenceRow += `<div class="empty-digit"></div>`;
-            }
-            
-            differenceRow += diffArr.reverse().map((d, i) => {
-                const pos = diffArr.length - 1 - i;
-                let digitClass = 'digit-red';
-                if (pos === 1) digitClass = 'digit-green';
-                if (pos === 2) digitClass = 'digit-orange';
-                if (pos >= 3) digitClass = 'digit-purple';
-                
-                return `<div class="digit ${digitClass}">${d}</div>`;
-            }).join('');
-            
-            let solutionHTML = `
-                <div class="solution">
-                    <div class="solution-container">
-                        <div class="number-row">
-                            ${minuendRow}
-                        </div>
-                        <div class="number-row">
-                            ${subtrahendRow}
-                        </div>
-                        <div class="line" style="width: ${lineWidth}px;"></div>
-                        <div class="number-row">
-                            ${differenceRow}
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">⚠️</i> 教学困境</h4>
+                        <p>提出了在教学实践中普遍面临的几个核心难点：</p>
+                        <div class="highlight-box">
+                            <ul>
+                                <li><strong>抽象之困：</strong>数学概念过于抽象，学生难以真正理解</li>
+                                <li><strong>语言之困：</strong>课本数学语言与学生生活经验脱节，缺乏自然衔接</li>
+                                <li><strong>思维之困：</strong>学生逻辑思维尚未系统建立，思考问题缺乏条理</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            `;
-            
-            return {
-                type: 'subtraction',
-                minuend,
-                subtrahend,
-                difference,
-                solutionHTML
-            };
-        }
-
-        function generateProblems() {
-            const container = document.getElementById('problems-container');
-            container.innerHTML = '';
-            
-            // 创建题目列表
-            const problems = [];
-            
-            // 确保包含三种必选题型
-            problems.push(generateAdditionProblem('three_three')); // 三位数加三位数
-            problems.push(generateAdditionProblem('two_three')); // 两位数加三位数
-            problems.push(generateSubtractionProblem(true)); // 被减数为1000的减法
-            
-            // 添加剩余题目
-            problems.push(generateAdditionProblem(Math.random() > 0.5 ? 'three_three' : 'three_two'));
-            problems.push(generateSubtractionProblem());
-            problems.push(generateSubtractionProblem());
-            
-            // 打乱题目顺序
-            shuffleArray(problems);
-            
-            // 添加到容器，并确保颜色严格按黑蓝循环
-            problems.forEach((problem, index) => {
-                const colorClass = index % 2 === 0 ? 'black' : 'blue';
                 
-                // 创建题目div
-                const problemDiv = document.createElement('div');
-                problemDiv.className = `problem ${problem.type}`;
+                <!-- 陈燕珊老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">陈</div>
+                        <div class="teacher-info">
+                            <h3>陈燕珊老师</h3>
+                            <p>生活化教学实践</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">💡</i> 教学策略</h4>
+                        <p>分享了将数学知识与生活实际相融合的有效方法：</p>
+                        <ul>
+                            <li>避免重记忆而轻理解的教学方式</li>
+                            <li>通过实际案例帮助学生理解数学概念本质</li>
+                        </ul>
+                        <div class="example">
+                            <h5><i class="icon">📐</i> 实践案例</h5>
+                            <p>"计算烟囱表面积"等生活实例，有效提升了知识的应用价值，让学生在实践中理解数学概念。</p>
+                        </div>
+                    </div>
+                </div>
                 
-                // 题目文本
-                const problemText = document.createElement('div');
-                problemText.className = `problem-text ${colorClass}`;
+                <!-- 麦晓楠老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">麦</div>
+                        <div class="teacher-info">
+                            <h3>麦晓楠老师</h3>
+                            <p>困惑与成功案例分享</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">❓</i> 教学困惑</h4>
+                        <ul>
+                            <li>难以带动学生兴趣</li>
+                            <li>分数教学中"单位"概念的抽象性与学生具象思维之间的矛盾</li>
+                        </ul>
+                        
+                        <h4><i class="icon">✅</i> 成功案例</h4>
+                        <div class="example">
+                            <h5><i class="icon">🎮</i> "倍的认识"游戏化教学</h5>
+                            <p>通过游戏化教学有效激发了学生的学习热情，让学生在轻松愉快的氛围中掌握数学概念。</p>
+                        </div>
+                    </div>
+                </div>
                 
-                if (problem.type === 'addition') {
-                    problemText.innerHTML = `${problem.num1} + ${problem.num2} = <span class="answer">${problem.sum}</span>`;
-                    
-                    // 计算过程(初始隐藏)
-                    const calculationDiv = document.createElement('div');
-                    calculationDiv.className = 'calculation';
-                    calculationDiv.innerHTML = problem.calculationHTML;
-                    calculationDiv.style.display = 'none';
-                    
-                    problemDiv.appendChild(problemText);
-                    problemDiv.appendChild(calculationDiv);
-                } else {
-                    problemText.innerHTML = `${problem.minuend} - ${problem.subtrahend} = <span class="answer">${problem.difference}</span>`;
-                    
-                    // 计算过程(初始隐藏)
-                    const calculationDiv = document.createElement('div');
-                    calculationDiv.className = 'solution';
-                    calculationDiv.innerHTML = problem.solutionHTML;
-                    calculationDiv.style.display = 'none';
-                    
-                    problemDiv.appendChild(problemText);
-                    problemDiv.appendChild(calculationDiv);
-                }
+                <!-- 张惠鸿老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">张</div>
+                        <div class="teacher-info">
+                            <h3>张惠鸿老师</h3>
+                            <p>概念教学本质探索</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">🎯</i> 教学理念</h4>
+                        <p>强调了概念教学要遵循数学本质属性：</p>
+                        <ul>
+                            <li>通过周长与面积的对比教学，帮助学生厘清概念边界</li>
+                            <li>重视情境创设的真实性与必要性</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <p>让学生在真实需求中建构数学概念，而非被动接受知识。</p>
+                        </div>
+                    </div>
+                </div>
                 
-                container.appendChild(problemDiv);
-            });
-        }
+                <!-- 林炳枝老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">林</div>
+                        <div class="teacher-info">
+                            <h3>林炳枝老师</h3>
+                            <p>幼小衔接思维培养</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">🧠</i> 教学关注点</h4>
+                        <p>关注幼小衔接阶段学生的逻辑思维培养：</p>
+                        <ul>
+                            <li>尊重学生的认知发展规律</li>
+                            <li>通过多种方式让数学概念自然生根</li>
+                        </ul>
+                        
+                        <div class="example">
+                            <h5><i class="icon">🎭</i> 教学方法</h5>
+                            <p>场景模拟、学具操作、故事化情境等方式，让数学概念在生动有趣的情境中被学生自然接受。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        function toggleAnswers() {
-            const answers = document.querySelectorAll('.answer');
-            const calculations = document.querySelectorAll('.calculation, .solution');
-            const button = document.querySelector('.answer-btn');
+        <section class="section" id="afternoon">
+            <h2 class="section-title"><i class="icon">🌇</i> 下午场：教学策略与实践案例研讨</h2>
             
-            if (answers[0].style.display === 'inline') {
-                // 隐藏答案
-                answers.forEach(answer => answer.style.display = 'none');
-                calculations.forEach(calc => calc.style.display = 'none');
-                button.textContent = '答案';
-            } else {
-                // 显示答案
-                answers.forEach(answer => answer.style.display = 'inline');
-                calculations.forEach(calc => calc.style.display = 'block');
-                button.textContent = '隐藏答案';
+            <div class="intro">
+                <p>下午的培训聚焦于教学策略的深度研讨与实践案例分析。与会教师围绕如何将理论转化为实际教学行动展开了热烈讨论。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4><i class="icon">💎</i> 培训核心收获</h4>
+                <ul>
+                    <li>明确了数学概念教学的核心目标与实施路径</li>
+                    <li>掌握了多种将抽象概念具象化的教学方法</li>
+                    <li>学习了如何设计符合学生认知规律的教学活动</li>
+                    <li>增强了解决实际教学问题的能力与信心</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5><i class="icon">📊</i> 培训效果反馈</h5>
+                <p>根据培训后的问卷调查，98%的参训教师表示本次培训内容实用性强，对实际教学工作有直接指导意义。92%的教师表示将在今后的教学中尝试应用本次培训所学策略。</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>2025粤东西北全员轮训小学数学培训 · 聚焦真问题，共研新思路</p>
+            <p>记录教育智慧，促进教学成长</p>
+        </footer>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top">↑</button>
+    
+    <script>
+        // 图片轮播功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-control.prev');
+            const nextBtn = document.querySelector('.carousel-control.next');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
-        }
-        
-        // 页面加载时生成题目
-        window.onload = generateProblems;
+            
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                updateCarousel();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+                updateCarousel();
+            });
+            
+            // 自动轮播
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                updateCarousel();
+            }, 5000);
+            
+            // 返回顶部功能
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.style.display = 'block';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 平滑滚动导航
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
     </script>
 </body>
 </html>
