@@ -130,6 +130,10 @@
             border-left: 4px solid #1a6dba;
         }
         
+        .intro p:first-child {
+            text-indent: 2em; /* 首行缩进两格 */
+        }
+        
         .teacher-cards {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -340,6 +344,39 @@
             font-size: 0.9rem;
         }
         
+        /* 工作人员信息样式 */
+        .staff-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f8ff;
+            border-radius: 8px;
+            border-left: 4px solid #1a6dba;
+        }
+        
+        .staff-info h3 {
+            color: #1a6dba;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .staff-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .staff-item {
+            text-align: center;
+        }
+        
+        .staff-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        /* 响应式设计 */
         @media (max-width: 768px) {
             .teacher-cards {
                 grid-template-columns: 1fr;
@@ -347,6 +384,10 @@
             
             h1 {
                 font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
             }
             
             .container {
@@ -381,43 +422,21 @@
             }
         }
         
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+        }
+        
         /* 图标样式 */
         .icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        /* 工作人员信息样式 */
-        .staff-info {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f1f8ff;
-            border-radius: 8px;
-            border-left: 4px solid #1a6dba;
-        }
-        
-        .staff-info h3 {
-            color: #1a6dba;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .staff-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .staff-item {
-            text-align: center;
-        }
-        
-        .staff-item strong {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
         }
     </style>
 </head>
@@ -440,14 +459,12 @@
             <h1>秋日宜上高楼，交流互鉴促成长</h1>
             <div class="subtitle">2025年10月22日华南师范大学附小跟岗学习纪实</div>
             <div class="meta-info">
-               
+                <!-- 可以添加日期、作者等信息 -->
             </div>
         </header>
         
-       
-        
         <section class="intro">
-            <p>2025年10月22日，循着2025年粤东西北教师全员轮训小学数学培训项目的安排，我们第二跟岗小组的老师们满怀热忱，赴广州华南师范大学附属小学开启了沉浸式跟岗学习之旅。</p>
+            <p>2025年10月22日，循着2025年粤东西北教师全员轮训小学数学培训项目的安排，我们第二跟岗小组的老师们满怀热忱，赴广州华南师范大学附属小学开启了第三天的沉浸式跟岗学习之旅。</p>
         </section>
         
         <!-- 培训日程时间线 -->
@@ -458,7 +475,6 @@
                     <div class="timeline-content">
                         <div class="timeline-time">09:00 - 09:15</div>
                         <h3>抵达华师附小</h3>
-                       
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -529,9 +545,11 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- 插入图片2 -->
-            <img src="2.jpg" alt="从具体操作到抽象概念的知识建构" class="content-image">
-            <div class="image-caption">学生在体验中完成从具体操作到抽象概念的知识建构</div>
+                <img src="2.jpg" alt="从具体操作到抽象概念的知识建构" class="content-image">
+                <div class="image-caption">学生在体验中完成从具体操作到抽象概念的知识建构</div>
+                
                 <!-- 罗修如老师 -->
                 <div class="teacher-card">
                     <div class="card-header">
@@ -556,8 +574,6 @@
                     </div>
                 </div>
             </div>
-            
-            
         </section>
         
         <section class="section" id="wisdom">
@@ -644,13 +660,10 @@
         
         <!-- 工作人员信息 -->
         <section class="staff-info">
-
-            
-<p>拍照：陆乐胜、黄书强</p>
-      <p>撰稿：黄子生、陈银辉</p>
-        
-         <p>编辑：张素丽、方佩娜</p>
- <p>审核：华南师范大学附属小学跟岗分队成员、轮训助理</p>       
+            <p>拍照：陆乐胜、黄书强</p>
+            <p>撰稿：黄子生、陈银辉</p>
+            <p>编辑：张素丽、方佩娜</p>
+            <p>审核：华南师范大学附属小学跟岗分队成员、轮训助理</p>
         </section>
         
         <footer>
