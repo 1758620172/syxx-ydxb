@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聚焦真问题 共研新思路 - 小学数学培训纪实</title>
+    <title>秋日宜上高楼，交流互鉴促成长 - 华南师范大学附小跟岗学习纪实</title>
     <style>
         * {
             margin: 0;
@@ -19,28 +19,23 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
         }
         
         /* 导航栏样式 */
         .navbar {
             position: sticky;
             top: 0;
-            background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
             padding: 15px 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .nav-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -75,7 +70,7 @@
             padding: 30px 0;
             border-bottom: 2px solid #eaeaea;
             margin-bottom: 30px;
-            background: linear-gradient(135deg, #6a89cc 0%, #4a69bd 100%);
+            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
             color: white;
             border-radius: 10px 10px 0 0;
             margin: -20px -20px 30px -20px;
@@ -114,7 +109,7 @@
         
         .section-title {
             font-size: 1.6rem;
-            color: #4a69bd;
+            color: #1a6dba;
             padding-bottom: 10px;
             margin-bottom: 20px;
             border-bottom: 2px solid #eaeaea;
@@ -132,7 +127,7 @@
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 25px;
-            border-left: 4px solid #4a69bd;
+            border-left: 4px solid #1a6dba;
         }
         
         .teacher-cards {
@@ -157,7 +152,7 @@
         }
         
         .card-header {
-            background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
             color: white;
             padding: 15px;
             display: flex;
@@ -174,7 +169,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            color: #4a69bd;
+            color: #1a6dba;
         }
         
         .teacher-info h3 {
@@ -192,7 +187,7 @@
         }
         
         .card-content h4 {
-            color: #4a69bd;
+            color: #1a6dba;
             margin-bottom: 12px;
             font-size: 1.1rem;
             display: flex;
@@ -213,79 +208,34 @@
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
-            border: 1px dashed #4a69bd;
+            border: 1px dashed #1a6dba;
         }
         
         .example h5 {
-            color: #4a69bd;
+            color: #1a6dba;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
         
-        /* 图片轮播样式 */
-        .carousel {
-            position: relative;
+        /* 图片样式 */
+        .content-image {
             width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 10px;
-            margin: 30px 0;
+            max-width: 600px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eaeaea;
         }
         
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-        
-        .carousel-item {
-            min-width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .carousel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 15px;
+        .image-caption {
             text-align: center;
-        }
-        
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-        
-        .carousel-control:hover {
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .carousel-control.prev {
-            left: 15px;
-        }
-        
-        .carousel-control.next {
-            right: 15px;
+            font-style: italic;
+            color: #666;
+            margin-top: 8px;
+            font-size: 0.9rem;
         }
         
         /* 时间线样式 */
@@ -299,7 +249,7 @@
             content: '';
             position: absolute;
             width: 4px;
-            background-color: #4a69bd;
+            background-color: #1a6dba;
             top: 0;
             bottom: 0;
             left: 50%;
@@ -326,7 +276,7 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #4a69bd;
+            border-left: 4px solid #1a6dba;
         }
         
         .timeline-item::after {
@@ -335,7 +285,7 @@
             width: 20px;
             height: 20px;
             background-color: white;
-            border: 4px solid #4a69bd;
+            border: 4px solid #1a6dba;
             border-radius: 50%;
             top: 20px;
             z-index: 1;
@@ -351,7 +301,7 @@
         
         .timeline-time {
             font-weight: bold;
-            color: #4a69bd;
+            color: #1a6dba;
             margin-bottom: 5px;
         }
         
@@ -369,39 +319,16 @@
             gap: 8px;
             padding: 10px 20px;
             background: #f1f8ff;
-            border: 1px solid #4a69bd;
+            border: 1px solid #1a6dba;
             border-radius: 30px;
-            color: #4a69bd;
+            color: #1a6dba;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .share-btn:hover {
-            background: #4a69bd;
+            background: #1a6dba;
             color: white;
-        }
-        
-        /* 返回顶部按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: #4a69bd;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            display: none;
-            z-index: 1000;
-            transition: background 0.3s;
-        }
-        
-        .back-to-top:hover {
-            background: #6a89cc;
         }
         
         footer {
@@ -449,10 +376,6 @@
                 left: 21px;
             }
             
-            .carousel {
-                height: 250px;
-            }
-            
             .nav-links {
                 display: none;
             }
@@ -464,316 +387,290 @@
             align-items: center;
             justify-content: center;
         }
+        
+        /* 工作人员信息样式 */
+        .staff-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f8ff;
+            border-radius: 8px;
+            border-left: 4px solid #1a6dba;
+        }
+        
+        .staff-info h3 {
+            color: #1a6dba;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .staff-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .staff-item {
+            text-align: center;
+        }
+        
+        .staff-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">小学数学培训</div>
+            <div class="logo">华师附小跟岗学习</div>
             <div class="nav-links">
-                <a href="#morning">上午场</a>
-                <a href="#afternoon">下午场</a>
-                <a href="#schedule">培训日程</a>
-                <a href="#gallery">现场照片</a>
+                <a href="#teachers">教师风采</a>
+                <a href="#seminar">课例研讨</a>
+                <a href="#schedule">日程安排</a>
+                <a href="#wisdom">教学智慧</a>
             </div>
         </div>
     </nav>
     
     <div class="container">
         <header>
-            <h1>聚焦真问题 共研新思路</h1>
-            <div class="subtitle">2025粤东西北全员轮训小学数学培训第二期第4日纪实</div>
+            <h1>秋日宜上高楼，交流互鉴促成长</h1>
+            <div class="subtitle">2025年10月22日华南师范大学附小跟岗学习纪实</div>
             <div class="meta-info">
-                <span><i class="icon">⏱️</i> 16小时前</span>
-                <span><i class="icon">👁️</i> 阅读 1313</span>
-                <span><i class="icon">📅</i> 2025年10月19日</span>
+               
             </div>
         </header>
         
-        <!-- 分享按钮 -->
-        <div class="share-buttons">
-            <button class="share-btn"><i class="icon">📤</i> 分享文章</button>
-            <button class="share-btn"><i class="icon">❤️</i> 收藏文章</button>
-            <button class="share-btn"><i class="icon">📝</i> 写评论</button>
-        </div>
+       
         
-        <!-- 图片轮播 -->
-        <div id="gallery" class="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/4a69bd/ffffff?text=培训现场+1');">
-                    <div class="carousel-caption">分组研讨环节，老师们积极交流</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/6a89cc/ffffff?text=培训现场+2');">
-                    <div class="carousel-caption">专家讲座，深入解析数学概念教学</div>
-                </div>
-                <div class="carousel-item" style="background-image: url('https://via.placeholder.com/1000x400/4a69bd/ffffff?text=培训现场+3');">
-                    <div class="carousel-caption">实践案例分享，老师们认真记录</div>
-                </div>
-            </div>
-            <button class="carousel-control prev">❮</button>
-            <button class="carousel-control next">❯</button>
-        </div>
+        <section class="intro">
+            <p>2025年10月22日，循着2025年粤东西北教师全员轮训小学数学培训项目的安排，我们第二跟岗小组的老师们满怀热忱，赴广州华南师范大学附属小学开启了沉浸式跟岗学习之旅。</p>
+        </section>
         
         <!-- 培训日程时间线 -->
         <section class="section">
-            <h2 class="section-title" id="schedule"><i class="icon">📅</i> 培训日程安排</h2>
+            <h2 class="section-title" id="schedule"><i class="icon">📅</i> 跟岗学习日程安排</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">08:30 - 09:00</div>
-                        <h3>开幕式与培训介绍</h3>
-                        <p>培训目标与日程安排说明</p>
+                        <div class="timeline-time">09:00 - 09:15</div>
+                        <h3>抵达华师附小</h3>
+                       
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">09:00 - 10:30</div>
-                        <h3>核心素养导向的概念教学</h3>
-                        <p>鲍银霞教研员主持分组研讨</p>
+                        <div class="timeline-time">09:25 - 10:00</div>
+                        <h3>观摩课堂教学</h3>
+                        <p>付欣雨老师《认识厘米》同课异构</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">10:30 - 12:00</div>
-                        <h3>一线教师经验分享</h3>
-                        <p>多位教师分享教学实践案例</p>
+                        <div class="timeline-time">10:15 - 10:50</div>
+                        <h3>观摩课堂教学</h3>
+                        <p>罗修如老师《认识厘米》同课异构</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">14:00 - 15:30</div>
-                        <h3>数学概念教学专题讲座</h3>
-                        <p>专家深入解析概念教学策略</p>
+                        <div class="timeline-time">14:30 - 15:30</div>
+                        <h3>课例研讨会</h3>
+                        <p>说课、评课与教学研讨</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-time">15:30 - 17:00</div>
-                        <h3>教学设计与实践研讨</h3>
-                        <p>分组设计教学方案并展示交流</p>
+                        <div class="timeline-time">15:30 - 16:30</div>
+                        <h3>总结与交流</h3>
+                        <p>分享学习心得与收获</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="section" id="morning">
-            <h2 class="section-title"><i class="icon">🌅</i> 上午场：核心素养导向的概念教学探索</h2>
+        <section class="section" id="teachers">
+            <h2 class="section-title"><i class="icon">👩‍🏫</i> 教师风采：同课异构《认识厘米》</h2>
             
             <div class="intro">
-                <p>上午的活动中，广东省教育研究院鲍银霞教研员首先引领与会教师开展分组研讨。来自教学一线的老师们畅所欲言，分享了各自在数学概念教学中遇到的真实困境与成功经验。</p>
+                <p>在二年级《认识厘米》的课堂上，付欣雨和罗修如两位老师用不同的教学设计，共同诠释了"测量启蒙"的教学艺术。</p>
             </div>
             
+            <!-- 插入图片1 -->
+            <img src="1.jpg" alt="教师风采：同课异构《认识厘米》" class="content-image">
+            <div class="image-caption">从生活需求出发，在问题中建构标准</div>
+            
             <div class="teacher-cards">
-                <!-- 刘展鸿老师 -->
+                <!-- 付欣雨老师 -->
                 <div class="teacher-card">
                     <div class="card-header">
-                        <div class="teacher-avatar">刘</div>
+                        <div class="teacher-avatar">付</div>
                         <div class="teacher-info">
-                            <h3>刘展鸿老师</h3>
-                            <p>教学实践难点分析</p>
+                            <h3>付欣雨老师</h3>
+                            <p>从生活需求出发，在问题中建构标准</p>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h4><i class="icon">⚠️</i> 教学困境</h4>
-                        <p>提出了在教学实践中普遍面临的几个核心难点：</p>
+                        <h4><i class="icon">💡</i> 教学特色</h4>
+                        <p>付老师从"为照片配相框"的实际问题切入课堂。学生们兴致勃勃地用不同长度的小木棒测量照片短边，却在交流中发现结果五花八门。</p>
                         <div class="highlight-box">
                             <ul>
-                                <li><strong>抽象之困：</strong>数学概念过于抽象，学生难以真正理解</li>
-                                <li><strong>语言之困：</strong>课本数学语言与学生生活经验脱节，缺乏自然衔接</li>
-                                <li><strong>思维之困：</strong>学生逻辑思维尚未系统建立，思考问题缺乏条理</li>
+                                <li><strong>认知冲突：</strong>不同测量结果引出统一标准的必要性</li>
+                                <li><strong>直观感知：</strong>学生手捏1厘米小棒观察，发现指甲宽度、纽扣直径都大约是1厘米</li>
+                                <li><strong>工具演变：</strong>将多个1厘米小棒连接成尺子，理解测量工具原理</li>
+                            </ul>
+                        </div>
+                        <div class="example">
+                            <h5><i class="icon">🎯</i> 教学亮点</h5>
+                            <p>从具体操作到抽象概念，学生在体验中完成了知识的自然建构。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 插入图片2 -->
+            <img src="2.jpg" alt="从具体操作到抽象概念的知识建构" class="content-image">
+            <div class="image-caption">学生在体验中完成从具体操作到抽象概念的知识建构</div>
+                <!-- 罗修如老师 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">罗</div>
+                        <div class="teacher-info">
+                            <h3>罗修如老师</h3>
+                            <p>穿越古今溯源，在文化中理解统一</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">📚</i> 教学特色</h4>
+                        <p>罗老师从文化视角展开教学。课堂从认识文具功能开始，引导学生体验古人"一庹""一拃""一脚"的测量智慧。</p>
+                        <ul>
+                            <li>体验古人测量方法，感受统一度量衡的重要性</li>
+                            <li>"一放正，二对零，三读数"九字口诀简化测量要领</li>
+                            <li>测量铅笔、橡皮时边念边做，快速掌握正确方法</li>
+                        </ul>
+                        <div class="example">
+                            <h5><i class="icon">🎵</i> 教学亮点</h5>
+                            <p>将复杂的测量要领编成朗朗上口的歌诀，学生在实践中轻松掌握技能。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </section>
+        
+        <section class="section" id="wisdom">
+            <h2 class="section-title"><i class="icon">🧠</i> 异曲同工的教学智慧</h2>
+            
+            <div class="intro">
+                <p>两位老师虽然路径不同——付老师注重问题解决，罗老师侧重文化体验，但都精准把握了教学核心。</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4><i class="icon">💎</i> 共同的教学智慧</h4>
+                <ul>
+                    <li>让学生在认知冲突中体会统一标准的必要性</li>
+                    <li>通过动手操作建立1厘米的量感</li>
+                    <li>在实践运用中掌握测量技能</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5><i class="icon">🌟</i> 教学成果</h5>
+                <p>当孩子们兴奋地报告"我的橡皮厚2厘米""课本长26厘米"时，测量已不再是抽象概念，而是探索世界的新工具。这或许正是教学的最高境界——让知识在体验中生根，让能力在运用中生长。教育的魅力，就在于同样的课题可以绽放不同的精彩。</p>
+            </div>
+        </section>
+        
+        <section class="section" id="seminar">
+            <h2 class="section-title"><i class="icon">💬</i> 下午课例研讨会</h2>
+            
+            <div class="intro">
+                <p>下午2时30分，华南师大附小二楼会议室迎来了一场热烈的课例研讨会。附小教师与粤东西北跟岗学习教师齐聚一堂，通过深度交流，共促教学成长。</p>
+            </div>
+            
+            <!-- 插入图片3 -->
+            <img src="3.jpg" alt="下午课例研讨会" class="content-image">
+            <div class="image-caption">华南师大附小二楼会议室热烈的课例研讨会现场</div>
+            
+            <div class="teacher-cards">
+                <!-- 说课环节 -->
+                <div class="teacher-card">
+                    <div class="card-header">
+                        <div class="teacher-avatar">说</div>
+                        <div class="teacher-info">
+                            <h3>精彩说课</h3>
+                            <p>四位老师带来精彩分享</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h4><i class="icon">👩‍🏫</i> 说课教师</h4>
+                        <div class="highlight-box">
+                            <ul>
+                                <li><strong>王珂老师：</strong>六年级《认识倒数》，重点讲解概念本质</li>
+                                <li><strong>陈洁宜老师：</strong>二年级《平均分》，教学设计层层递进</li>
+                                <li><strong>付欣雨与罗修如老师：</strong>同课异构《认识厘米》，风格各异同样精彩</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 陈燕珊老师 -->
+                <!-- 评课环节 -->
                 <div class="teacher-card">
                     <div class="card-header">
-                        <div class="teacher-avatar">陈</div>
+                        <div class="teacher-avatar">评</div>
                         <div class="teacher-info">
-                            <h3>陈燕珊老师</h3>
-                            <p>生活化教学实践</p>
+                            <h3>深度评课</h3>
+                            <p>碰撞思想火花</p>
                         </div>
                     </div>
                     <div class="card-content">
-                        <h4><i class="icon">💡</i> 教学策略</h4>
-                        <p>分享了将数学知识与生活实际相融合的有效方法：</p>
-                        <ul>
-                            <li>避免重记忆而轻理解的教学方式</li>
-                            <li>通过实际案例帮助学生理解数学概念本质</li>
-                        </ul>
-                        <div class="example">
-                            <h5><i class="icon">📐</i> 实践案例</h5>
-                            <p>"计算烟囱表面积"等生活实例，有效提升了知识的应用价值，让学生在实践中理解数学概念。</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 麦晓楠老师 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">麦</div>
-                        <div class="teacher-info">
-                            <h3>麦晓楠老师</h3>
-                            <p>困惑与成功案例分享</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">❓</i> 教学困惑</h4>
-                        <ul>
-                            <li>难以带动学生兴趣</li>
-                            <li>分数教学中"单位"概念的抽象性与学生具象思维之间的矛盾</li>
-                        </ul>
-                        
-                        <h4><i class="icon">✅</i> 成功案例</h4>
-                        <div class="example">
-                            <h5><i class="icon">🎮</i> "倍的认识"游戏化教学</h5>
-                            <p>通过游戏化教学有效激发了学生的学习热情，让学生在轻松愉快的氛围中掌握数学概念。</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 张惠鸿老师 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">张</div>
-                        <div class="teacher-info">
-                            <h3>张惠鸿老师</h3>
-                            <p>概念教学本质探索</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">🎯</i> 教学理念</h4>
-                        <p>强调了概念教学要遵循数学本质属性：</p>
-                        <ul>
-                            <li>通过周长与面积的对比教学，帮助学生厘清概念边界</li>
-                            <li>重视情境创设的真实性与必要性</li>
-                        </ul>
-                        
+                        <h4><i class="icon">💬</i> 评课观点</h4>
                         <div class="highlight-box">
-                            <p>让学生在真实需求中建构数学概念，而非被动接受知识。</p>
+                            <ul>
+                                <li><strong>附小王老师：</strong>从教学细节出发，精准点评，认为四节课分别体现了"概念讲解精彩"、"条理清晰"、"设计巧妙"和"基本功扎实"的特点</li>
+                                <li><strong>跟岗教师代表郑佳校老师：</strong>从理念层面分享感悟，称赞这些课堂让数学"看得见、摸得着"，将"抽象概念"变成了"可操作体验"</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 林炳枝老师 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">林</div>
-                        <div class="teacher-info">
-                            <h3>林炳枝老师</h3>
-                            <p>幼小衔接思维培养</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">🧠</i> 教学关注点</h4>
-                        <p>关注幼小衔接阶段学生的逻辑思维培养：</p>
-                        <ul>
-                            <li>尊重学生的认知发展规律</li>
-                            <li>通过多种方式让数学概念自然生根</li>
-                        </ul>
-                        
-                        <div class="example">
-                            <h5><i class="icon">🎭</i> 教学方法</h5>
-                            <p>场景模拟、学具操作、故事化情境等方式，让数学概念在生动有趣的情境中被学生自然接受。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="afternoon">
-            <h2 class="section-title"><i class="icon">🌇</i> 下午场：教学策略与实践案例研讨</h2>
-            
-            <div class="intro">
-                <p>下午的培训聚焦于教学策略的深度研讨与实践案例分析。与会教师围绕如何将理论转化为实际教学行动展开了热烈讨论。</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h4><i class="icon">💎</i> 培训核心收获</h4>
-                <ul>
-                    <li>明确了数学概念教学的核心目标与实施路径</li>
-                    <li>掌握了多种将抽象概念具象化的教学方法</li>
-                    <li>学习了如何设计符合学生认知规律的教学活动</li>
-                    <li>增强了解决实际教学问题的能力与信心</li>
-                </ul>
             </div>
             
             <div class="example">
-                <h5><i class="icon">📊</i> 培训效果反馈</h5>
-                <p>根据培训后的问卷调查，98%的参训教师表示本次培训内容实用性强，对实际教学工作有直接指导意义。92%的教师表示将在今后的教学中尝试应用本次培训所学策略。</p>
+                <h5><i class="icon">🎯</i> 研讨会总结</h5>
+                <p>陈曼老师进行总结，为活动画上圆满句号。此次研讨，不仅是一次经验的分享，更是一次智慧的碰撞。相信所有跟岗老师必将带着收获与思考，将先进的教学理念带回各自岗位，为粤东西北的教育事业贡献自己的力量！</p>
             </div>
         </section>
         
+        <!-- 工作人员信息 -->
+        <section class="staff-info">
+
+            
+<p>拍照：陆乐胜、黄书强</p>
+      <p>撰稿：黄子生、陈银辉</p>
+<p>编辑：张素丽、方佩娜</p>           
+         <p>编辑：张素丽、方佩娜</p>
+ <p>审核：华南师范大学附属小学跟岗分队成员、轮训助理</p>       
+        </section>
+        
         <footer>
-            <p>2025粤东西北全员轮训小学数学培训 · 聚焦真问题，共研新思路</p>
+            <p>惠来县实验小学 &copy; 2025年10月22日</p>
             <p>记录教育智慧，促进教学成长</p>
         </footer>
     </div>
     
-    <!-- 返回顶部按钮 -->
-    <button class="back-to-top">↑</button>
-    
     <script>
-        // 图片轮播功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselInner = document.querySelector('.carousel-inner');
-            const carouselItems = document.querySelectorAll('.carousel-item');
-            const prevBtn = document.querySelector('.carousel-control.prev');
-            const nextBtn = document.querySelector('.carousel-control.next');
-            let currentIndex = 0;
-            
-            function updateCarousel() {
-                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-            
-            nextBtn.addEventListener('click', function() {
-                currentIndex = (currentIndex + 1) % carouselItems.length;
-                updateCarousel();
-            });
-            
-            prevBtn.addEventListener('click', function() {
-                currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-                updateCarousel();
-            });
-            
-            // 自动轮播
-            setInterval(function() {
-                currentIndex = (currentIndex + 1) % carouselItems.length;
-                updateCarousel();
-            }, 5000);
-            
-            // 返回顶部功能
-            const backToTopBtn = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopBtn.style.display = 'block';
-                } else {
-                    backToTopBtn.style.display = 'none';
-                }
-            });
-            
-            backToTopBtn.addEventListener('click', function() {
+        // 平滑滚动导航
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
                 window.scrollTo({
-                    top: 0,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
-                });
-            });
-            
-            // 平滑滚动导航
-            document.querySelectorAll('.nav-links a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
                 });
             });
         });
