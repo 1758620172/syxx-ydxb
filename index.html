@@ -9,681 +9,236 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             color: #333;
-            line-height: 1.6;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
         }
         
-        /* 导航栏样式 */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
-            padding: 15px 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-        
-        .nav-links a {
+        .header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
             color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .logo {
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        header {
+            padding: 30px;
             text-align: center;
-            padding: 30px 0;
-            border-bottom: 2px solid #eaeaea;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
-            color: white;
-            border-radius: 10px 10px 0 0;
-            margin: -20px -20px 30px -20px;
-            padding: 40px 20px;
         }
         
-        h1 {
-            font-size: 2.2rem;
+        .header i {
+            font-size: 64px;
             margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            display: block;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
             margin-bottom: 10px;
         }
         
-        .meta-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 0.9rem;
-            margin-top: 15px;
+        .content {
+            padding: 30px;
         }
         
-        .meta-info span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            font-size: 1.6rem;
-            color: #1a6dba;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eaeaea;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-title i {
-            font-size: 1.4rem;
-        }
-        
-        .intro {
-            background-color: #f1f8ff;
-            padding: 20px;
-            border-radius: 8px;
+        .message {
             margin-bottom: 25px;
-            border-left: 4px solid #1a6dba;
+            line-height: 1.6;
         }
         
-        .intro p:first-child {
-            text-indent: 2em; /* 首行缩进两格 */
-        }
-        
-        .teacher-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        
-        .teacher-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #eaeaea;
-        }
-        
-        .teacher-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header {
-            background: linear-gradient(135deg, #1a6dba 0%, #0d4d8c 100%);
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .teacher-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: #1a6dba;
-        }
-        
-        .teacher-info h3 {
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-        
-        .teacher-info p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .card-content h4 {
-            color: #1a6dba;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .highlight-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #ff9f43;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .example {
-            background-color: #e8f4fd;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px dashed #1a6dba;
-        }
-        
-        .example h5 {
-            color: #1a6dba;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        /* 图片样式 */
-        .content-image {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid #eaeaea;
-        }
-        
-        .image-caption {
-            text-align: center;
-            font-style: italic;
-            color: #666;
-            margin-top: 8px;
-            font-size: 0.9rem;
-        }
-        
-        /* 时间线样式 */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #1a6dba;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #1a6dba;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid #1a6dba;
-            border-radius: 50%;
-            top: 20px;
-            z-index: 1;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-        
-        .timeline-time {
-            font-weight: bold;
-            color: #1a6dba;
-            margin-bottom: 5px;
-        }
-        
-        /* 分享按钮样式 */
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .share-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: #f1f8ff;
-            border: 1px solid #1a6dba;
-            border-radius: 30px;
-            color: #1a6dba;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .share-btn:hover {
-            background: #1a6dba;
-            color: white;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-            border-top: 1px solid #eaeaea;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* 工作人员信息样式 */
-        .staff-info {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f1f8ff;
-            border-radius: 8px;
-            border-left: 4px solid #1a6dba;
-        }
-        
-        .staff-info h3 {
-            color: #1a6dba;
+        .message h2 {
+            color: #ee5a52;
             margin-bottom: 15px;
-            text-align: center;
+            font-size: 20px;
         }
         
-        .staff-list {
+        .message p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .reasons {
+            background: #f9f9f9;
+            border-left: 4px solid #ee5a52;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .reasons h3 {
+            margin-bottom: 10px;
+            color: #444;
+        }
+        
+        .reasons ul {
+            padding-left: 20px;
+        }
+        
+        .reasons li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .actions {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            margin-top: 30px;
         }
         
-        .staff-item {
-            text-align: center;
-        }
-        
-        .staff-item strong {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .teacher-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 21px;
-            }
-            
-            .timeline-item:nth-child(odd)::after,
-            .timeline-item:nth-child(even)::after {
-                left: 21px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .subtitle {
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* 图标样式 */
-        .icon {
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: #4a6cf7;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3a5ce5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f1f3f4;
+            color: #444;
+        }
+        
+        .btn-secondary:hover {
+            background: #e4e6e8;
+            transform: translateY(-2px);
+        }
+        
+        .contact {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .contact a {
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header i {
+                font-size: 48px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">华师附小跟岗学习</div>
-            <div class="nav-links">
-                <a href="#teachers">教师风采</a>
-                <a href="#seminar">课例研讨</a>
-                <a href="#schedule">日程安排</a>
-                <a href="#wisdom">教学智慧</a>
+    <div class="container">
+        <div class="header">
+            <!-- 使用SVG图标替代字体图标 -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <h1>无访问权限</h1>
+            <p>您没有权限访问此内容</p>
+        </div>
+        
+        <div class="content">
+            <div class="message">
+                <h2>访问被拒绝</h2>
+                <p>抱歉，您当前没有权限访问此页面或资源。这可能是由于以下原因：</p>
+                
+                <div class="reasons">
+                    <h3>可能的原因：</h3>
+                    <ul>
+                        <li>您的账户权限不足</li>
+                        <li>此内容需要特定角色或权限</li>
+                        <li>您尚未登录或会话已过期</li>
+                        <li>此资源已被移动、删除或限制访问</li>
+                        <li>系统检测到异常访问行为</li>
+                    </ul>
+                </div>
+                
+                <p>如果您认为这是一个错误，或者您应该有权访问此内容，请联系系统管理员或网站支持团队。</p>
+            </div>
+            
+         
+            
+            <div class="contact">
+                <p>需要帮助？<a href="#">联系我们的支持团队</p>
             </div>
         </div>
-    </nav>
-    
-    <div class="container">
-        <header>
-            <h1>秋日宜上高楼，交流互鉴促成长</h1>
-            <div class="subtitle">2025年10月22日华南师范大学附小跟岗学习纪实</div>
-            <div class="meta-info">
-                <!-- 可以添加日期、作者等信息 -->
-            </div>
-        </header>
-        
-        <section class="intro">
-            <p>2025年10月22日，循着2025年粤东西北教师全员轮训小学数学培训项目的安排，我们第二跟岗小组的老师们满怀热忱，赴广州华南师范大学附属小学开启了第三天的沉浸式跟岗学习之旅。</p>
-        </section>
-        
-        <!-- 培训日程时间线 -->
-        <section class="section">
-            <h2 class="section-title" id="schedule"><i class="icon">📅</i> 跟岗学习日程安排</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">09:00 - 09:15</div>
-                        <h3>抵达华师附小</h3>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">09:25 - 10:00</div>
-                        <h3>观摩课堂教学</h3>
-                        <p>付欣雨老师《认识厘米》同课异构</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">10:15 - 10:50</div>
-                        <h3>观摩课堂教学</h3>
-                        <p>罗修如老师《认识厘米》同课异构</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">14:30 - 15:30</div>
-                        <h3>课例研讨会</h3>
-                        <p>说课、评课与教学研讨</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-time">15:30 - 16:30</div>
-                        <h3>总结与交流</h3>
-                        <p>分享学习心得与收获</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="teachers">
-            <h2 class="section-title"><i class="icon">👩‍🏫</i> 教师风采：同课异构《认识厘米》</h2>
-            
-            <div class="intro">
-                <p>在二年级《认识厘米》的课堂上，付欣雨和罗修如两位老师用不同的教学设计，共同诠释了"测量启蒙"的教学艺术。</p>
-            </div>
-            
-            <!-- 插入图片1 -->
-            <img src="1.jpg" alt="教师风采：同课异构《认识厘米》" class="content-image">
-            <div class="image-caption">从生活需求出发，在问题中建构标准</div>
-            
-            <div class="teacher-cards">
-                <!-- 付欣雨老师 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">付</div>
-                        <div class="teacher-info">
-                            <h3>付欣雨老师</h3>
-                            <p>从生活需求出发，在问题中建构标准</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">💡</i> 教学特色</h4>
-                        <p style="text-indent: 2em;">付老师从"为照片配相框"的实际问题切入课堂。学生们兴致勃勃地用不同长度的小木棒测量照片短边，却在交流中发现结果五花八门。</p>
-                        <div class="highlight-box">
-                            <ul>
-                                <li><strong>认知冲突：</strong>不同测量结果引出统一标准的必要性</li>
-                                <li><strong>直观感知：</strong>学生手捏1厘米小棒观察，发现指甲宽度、纽扣直径都大约是1厘米</li>
-                                <li><strong>工具演变：</strong>将多个1厘米小棒连接成尺子，理解测量工具原理</li>
-                            </ul>
-                        </div>
-                        <div class="example">
-                            <h5><i class="icon">🎯</i> 教学亮点</h5>
-                            <p style="text-indent: 2em;">从具体操作到抽象概念，学生在体验中完成了知识的自然建构。</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 插入图片2 -->
-                <img src="2.jpg" alt="从具体操作到抽象概念的知识建构" class="content-image">
-                <div class="image-caption">学生在体验中完成从具体操作到抽象概念的知识建构</div>
-                
-                <!-- 罗修如老师 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">罗</div>
-                        <div class="teacher-info">
-                            <h3>罗修如老师</h3>
-                            <p>穿越古今溯源，在文化中理解统一</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">📚</i> 教学特色</h4>
-                        <p style="text-indent: 2em;">罗老师从文化视角展开教学。课堂从认识文具功能开始，引导学生体验古人"一庹""一拃""一脚"的测量智慧。</p>
-                        <ul>
-                            <li>体验古人测量方法，感受统一度量衡的重要性</li>
-                            <li>"一放正，二对零，三读数"九字口诀简化测量要领</li>
-                            <li>测量铅笔、橡皮时边念边做，快速掌握正确方法</li>
-                        </ul>
-                        <div class="example">
-                            <h5><i class="icon">🎵</i> 教学亮点</h5>
-                            <p style="text-indent: 2em;">将复杂的测量要领编成朗朗上口的歌诀，学生在实践中轻松掌握技能。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="wisdom">
-            <h2 class="section-title"><i class="icon">🧠</i> 异曲同工的教学智慧</h2>
-            
-            <div class="intro">
-                <p>两位老师虽然路径不同——付老师注重问题解决，罗老师侧重文化体验，但都精准把握了教学核心。</p>
-            </div>
-            
-            <div class="highlight-box">
-                <h4><i class="icon">💎</i> 共同的教学智慧</h4>
-                <ul>
-                    <li>让学生在认知冲突中体会统一标准的必要性</li>
-                    <li>通过动手操作建立1厘米的量感</li>
-                    <li>在实践运用中掌握测量技能</li>
-                </ul>
-            </div>
-            
-            <div class="example">
-                <h5><i class="icon">🌟</i> 教学成果</h5>
-                <p style="text-indent: 2em;">当孩子们兴奋地报告"我的橡皮厚2厘米""课本长26厘米"时，测量已不再是抽象概念，而是探索世界的新工具。这或许正是教学的最高境界——让知识在体验中生根，让能力在运用中生长。教育的魅力，就在于同样的课题可以绽放不同的精彩。</p>
-            </div>
-        </section>
-        
-        <section class="section" id="seminar">
-            <h2 class="section-title"><i class="icon">💬</i> 下午课例研讨会</h2>
-            
-            <div class="intro">
-                <p>下午2时30分，华南师大附小二楼会议室迎来了一场热烈的课例研讨会。附小教师与粤东西北跟岗学习教师齐聚一堂，通过深度交流，共促教学成长。</p>
-            </div>
-            
-            <!-- 插入图片3 -->
-            <img src="3.jpg" alt="下午课例研讨会" class="content-image">
-            <div class="image-caption">华南师大附小二楼会议室热烈的课例研讨会现场</div>
-            
-            <div class="teacher-cards">
-                <!-- 说课环节 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">说</div>
-                        <div class="teacher-info">
-                            <h3>精彩说课</h3>
-                            <p>四位老师带来精彩分享</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">👩‍🏫</i> 说课教师</h4>
-                        <div class="highlight-box">
-                            <ul>
-                                <li><strong>王珂老师：</strong>六年级《认识倒数》，重点讲解概念本质</li>
-                                <li><strong>陈洁宜老师：</strong>二年级《平均分》，教学设计层层递进</li>
-                                <li><strong>付欣雨与罗修如老师：</strong>同课异构《认识厘米》，风格各异同样精彩</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 评课环节 -->
-                <div class="teacher-card">
-                    <div class="card-header">
-                        <div class="teacher-avatar">评</div>
-                        <div class="teacher-info">
-                            <h3>深度评课</h3>
-                            <p>碰撞思想火花</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h4><i class="icon">💬</i> 评课观点</h4>
-                        <div class="highlight-box">
-                            <ul>
-                                <li><strong>附小王老师：</strong>从教学细节出发，精准点评，认为四节课分别体现了"概念讲解精彩"、"条理清晰"、"设计巧妙"和"基本功扎实"的特点</li>
-                                <li><strong>跟岗教师代表郑佳校老师：</strong>从理念层面分享感悟，称赞这些课堂让数学"看得见、摸得着"，将"抽象概念"变成了"可操作体验"</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="example">
-                <h5><i class="icon">🎯</i> 研讨会总结</h5>
-                <p style="text-indent: 2em;">陈曼老师进行总结，为活动画上圆满句号。此次研讨，不仅是一次经验的分享，更是一次智慧的碰撞。相信所有跟岗老师必将带着收获与思考，将先进的教学理念带回各自岗位，为粤东西北的教育事业贡献自己的力量！</p>
-            </div>
-        </section>
-        
-        <!-- 工作人员信息 -->
-        <section class="staff-info">
-            <p>拍照：陆乐胜、黄书强</p>
-            <p>撰稿：黄子生、陈银辉</p>
-            <p>编辑：张素丽、方佩娜</p>
-            <p>审核：华南师范大学附属小学跟岗分队成员、轮训助理</p>
-        </section>
-        
-        <footer>
-            <p>惠来县实验小学 &copy; 2025年10月22日</p>
-            <p>记录教育智慧，促进教学成长</p>
-        </footer>
     </div>
-    
+
     <script>
-        // 平滑滚动导航
-        document.querySelectorAll('.nav-links a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 添加点击反馈
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // 在实际应用中，这里会有相应的导航或操作
+                    if(this.classList.contains('btn-primary')) {
+                        alert('即将返回首页');
+                    } else if(this.textContent.includes('重新登录')) {
+                        alert('即将跳转到登录页面');
+                    } else if(this.textContent.includes('联系支持')) {
+                        alert('即将打开支持页面');
+                    }
                 });
             });
         });
